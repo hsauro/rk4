@@ -14,8 +14,9 @@ Uses Classes, Types, SysUtils;
 // Arguments include the independent variable time, y the dependent variables,
 // p any parameters that are needed by the equations and dydt which must
 // return the rates of change.
+//
 // The function must be part of an object but can be a class method which
-// saves having to instaciate the object first
+// saves having to instantiate the object
 // Eg
 // TMySystem = class (TObject)
 //   class procedure func (time : double; y, p, dydt : TDoubleDynArray);
@@ -40,7 +41,7 @@ Uses Classes, Types, SysUtils;
 // Assign any parameter values
 // rk4.p[0] := 2.3; etc
 // Run eval to get next time step
-// startTime := rk4.eval (startTime, y, stepSize);
+// newTime := rk4.eval (startTime, y, stepSize);
 
 
 type
