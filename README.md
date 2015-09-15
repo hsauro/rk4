@@ -20,8 +20,8 @@ end;
 rk4 := TRK4.Create (2, 3, TMySystem.func);
 rk4.p[0] := vo; rk4.p[1] := k1; rk4.p[2] := k2;
 
-tepSize := strToFloat (edtStepSize.Text);
-umberOfsteps := strtoInt (edtNumberOfSteps.Text);
+stepSize := 0.05;
+numberOfsteps := 20;
 for i := 0 to numberOfsteps - 1 do
    startTime := rk4.eval (startTime, y, stepSize);
 
