@@ -23,8 +23,6 @@ rk4.p[0] := vo; rk4.p[1] := k1; rk4.p[2] := k2;
 stepSize := 0.05;
 numberOfsteps := 20;
 for i := 0 to numberOfsteps - 1 do
+  // y is updated at each interation
    startTime := rk4.eval (startTime, y, stepSize);
-
-
-
 ```
