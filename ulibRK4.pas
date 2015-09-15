@@ -19,10 +19,10 @@ Uses Classes, Types, SysUtils;
 // saves having to instantiate the object first
 // Eg
 // TMySystem = class (TObject)
-//   class procedure func (time : double; y, p, dydt : TDoubleDynArray);
+//   class procedure func (time : double; var y, p, dydt : array of double);
 // end;
 
-//class procedure TMySystem.func (time : double; y, p, dydt : TDoubleDynArray);
+//class procedure TMySystem.func (time : double; var y, p, dydt : array of double);
 //begin
 //  dydt[0] := p[0] - p[1]*y[0];
 //  dydt[1] := p[1]*y[0]  - p[2]*y[1];
