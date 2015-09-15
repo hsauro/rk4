@@ -16,7 +16,7 @@ Uses Classes, Types, SysUtils;
 // return the rates of change.
 //
 // The function must be part of an object but can be a class method which
-// saves having to instantiate the object
+// saves having to instantiate the object first
 // Eg
 // TMySystem = class (TObject)
 //   class procedure func (time : double; y, p, dydt : TDoubleDynArray);
@@ -45,7 +45,7 @@ Uses Classes, Types, SysUtils;
 
 
 type
-   TODEFunction = procedure (time : double; y, p, dydt : TDoubleDynArray) of object;
+   TODEFunction = procedure (time : double; var y, p, dydt : array of double) of object;
 
    TRK4 = class (TObject)
      private
@@ -59,7 +59,7 @@ type
        p : TDoubleDynArray;   // System Parameters
        constructor Create (nv, np : integer; odeFunc : TODEFunction);
        destructor  Destroy; override;
-       function    eval (time : double; y : TDoubleDynArray; stepSize : double) : double;
+       function    eval (time : double; var y : array of double; stepSize : double) : double;
    end;
 
 implementation
@@ -104,7 +104,7 @@ end;
 //
 // newTime = rk4.eval (currentTime, y, 0.1)
 //
-function TRK4.eval (time : double; y : TDoubleDynArray; stepSize : double) : double;
+function TRK4.eval (time : double; var y : array of double; stepSize : double) : double;
 var xh2, h6, half_stepSize : double;
     i : integer;
 begin

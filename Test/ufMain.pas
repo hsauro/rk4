@@ -9,7 +9,7 @@ uses
 
 type
   TMySystem = class (TObject)
-    class procedure func (time : double; y, p, dydt : TDoubleDynArray);
+    class procedure func (time : double; var y, p, dydt : array of double);
   end;
 
   TfrmMain = class(TForm)
@@ -28,8 +28,8 @@ type
     vo, k1, k2 : double;
   public
     { Public declarations }
-    procedure computeExpected (time : double; y: TDoubleDynArray);
-    procedure addActualAndExpected (time : double; y : TDoubleDynArray);
+    procedure computeExpected (time : double; var y: array of double);
+    procedure addActualAndExpected (time : double; var y : array of double);
   end;
 
 var
@@ -41,19 +41,19 @@ implementation
 
 // Analytical solution derived from Mathematica
 //A[t]->(vo-E^(-k1 t) vo)/k1,B[t]->((k1-E^(-k2 t) k1+(-1+E^(-k1 t)) k2) vo)/((k1-k2) k2)
-procedure TfrmMain.computeExpected (time : double; y : TDoubleDynArray);
+procedure TfrmMain.computeExpected (time : double; var y : array of double);
 begin
   y[0] := (vo-exp(-k1*time)*vo)/k1;
   y[1] := ((k1-exp(-k2*time)*k1+(-1+exp(-k1*time))*k2)*vo)/((k1-k2)*k2);
 end;
 
-class procedure TMySystem.func (time : double; y, p, dydt : TDoubleDynArray);
+class procedure TMySystem.func (time : double; var y, p, dydt : array of double);
 begin
   dydt[0] := p[0] - p[1]*y[0];
   dydt[1] := p[1]*y[0]  - p[2]*y[1];
 end;
 
-procedure TfrmMain.addActualAndExpected (time : double; y : TDoubleDynArray);
+procedure TfrmMain.addActualAndExpected (time : double; var y : array of double);
 var str : string;
     yExpected : TDoubleDynArray;
 begin

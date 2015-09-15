@@ -28,8 +28,6 @@ object frmMain: TfrmMain
     ParentFont = False
     ScrollBars = ssVertical
     TabOrder = 0
-    ExplicitLeft = 112
-    ExplicitWidth = 728
   end
   object Panel1: TPanel
     Left = 0
@@ -40,9 +38,6 @@ object frmMain: TfrmMain
     Alignment = taRightJustify
     BevelOuter = bvNone
     TabOrder = 1
-    ExplicitLeft = 16
-    ExplicitTop = 224
-    ExplicitWidth = 185
     object Label3: TLabel
       Left = 8
       Top = 14

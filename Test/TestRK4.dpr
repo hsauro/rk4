@@ -3,8 +3,7 @@ program TestRK4;
 uses
   Vcl.Forms,
   ufMain in 'ufMain.pas' {frmMain},
-  ulibRK4 in '..\ulibRK4.pas',
-  ulibRK45 in '..\ulibRK45.pas';
+  ulibRK4 in '..\ulibRK4.pas';
 
 {$R *.res}
 
