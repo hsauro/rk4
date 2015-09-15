@@ -1,9 +1,9 @@
 # rk4
-Implements a basic 4th order Runge-Kutta in Object Pascal. Solves a set of ordinary differential equations:
+Implements a basic 4th order Runge-Kutta in Object Pascal. Solves a set of ordinary differential equations of the form:
 
-dy/dt = f (y, t)
+dy/dt = f (t, y,  p)
 
-where y is a vector. 
+where t is the independent variable, y a vector of dependent variables and p a vector of parameters.
 
 ```javascript
 type
